@@ -33,9 +33,9 @@ const account2 = {
         "2019-12-25T06:04:23.907Z",
         "2020-01-25T14:18:46.235Z",
         "2020-02-05T16:33:06.386Z",
-        "2020-04-10T14:43:26.374Z",
-        "2020-06-25T18:49:59.371Z",
-        "2020-07-26T12:01:20.894Z",
+        "2023-01-19T14:43:26.374Z",
+        "2023-02-14T18:49:59.371Z",
+        "2023-02-18T12:01:20.894Z",
     ],
     currency: "USD",
     locale: "en-US",
@@ -153,8 +153,8 @@ const updateUI = function (acc) {
 };
 const startLogOutTimer = function () {
     const tick = function () {
-        const min = String(Math.trunc(time / 60)).padStart(2);
-        const sec = String(time % 60).padStart(2);
+        const min = String(Math.trunc(time / 60)).padStart(2, '0');
+        const sec = String(time % 60).padStart(2, '0');
         // In each call, print the remaining time to UI
         labelTimer.textContent = `${min}:${sec}`;
         // When 0 seconds, stop timer and log out user
@@ -166,8 +166,8 @@ const startLogOutTimer = function () {
         // Decrease 1s
         time--;
     };
-    // Set time to 5 minutes
-    let time = 120;
+    // Set time to 10 minutes
+    let time = 600;
     // Call the timer every second
     tick();
     const timer = setInterval(tick, 1000);
